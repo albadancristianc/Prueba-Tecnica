@@ -22,6 +22,7 @@ Cumple con los requerimientos del Módulo 2 de la prueba técnica.
 Clona el repositorio:
 
 https://github.com/albadancristianc/Prueba-Tecnica.git
+
 cd polizas-api
 
 Ejecuta con Maven:
