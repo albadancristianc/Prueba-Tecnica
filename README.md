@@ -23,8 +23,6 @@ Clona el repositorio:
 
 https://github.com/albadancristianc/Prueba-Tecnica.git
 
-cd polizas-api
-
 Ejecuta con Maven:
 
 mvn spring-boot:run
@@ -32,6 +30,7 @@ mvn spring-boot:run
 La API estará disponible en:
 
 http://localhost:8080
+
 🔹 Seguridad
 
 Todos los endpoints requieren el header:
@@ -39,22 +38,31 @@ Todos los endpoints requieren el header:
 x-api-key: 123456
 
 Si el valor es incorrecto, la API retornará un error.
+
 ---
+
 ## Endpoints
+
 # Listar pólizas
+
 GET /polizas?tipo={tipo}&estado={estado}
+
 Headers: x-api-key
 
 Retorna todas las pólizas filtradas por tipo y estado.
 
 # Obtener riesgos de una póliza
+
 GET /polizas/{id}/riesgos
+
 Headers: x-api-key
 
 Retorna los riesgos asociados a la póliza.
 
 # Renovar póliza
+
 POST /polizas/{id}/renovar
+
 Headers: x-api-key
 
 Incrementa canon y prima en +IPC (10% mock).
@@ -64,7 +72,9 @@ Cambia estado a RENOVADA.
 Registra evento en logs hacia /core-mock/evento.
 
 # Cancelar póliza
+
 POST /polizas/{id}/cancelar
+
 Headers: x-api-key
 
 Cambia estado a CANCELADA.
@@ -72,7 +82,9 @@ Cambia estado a CANCELADA.
 Todos los riesgos asociados pasan a CANCELADO.
 
 # Agregar riesgo
+
 POST /polizas/{id}/riesgos
+
 Headers: x-api-key
 Body: {
   "descripcion": "Descripcion del riesgo"
@@ -83,13 +95,17 @@ Solo si la póliza es COLECTIVA.
 Una póliza individual solo puede tener 1 riesgo.
 
 # Cancelar riesgo
+
 POST /riesgos/{id}/cancelar
+
 Headers: x-api-key
 
 Cambia el estado del riesgo a CANCELADO.
 
 # Mock externo
+
 POST /core-mock/evento
+
 Body: {
   "evento": "ACTUALIZACION",
   "polizaId": 555
